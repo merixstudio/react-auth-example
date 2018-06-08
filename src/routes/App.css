@@ -1,0 +1,19 @@
+.app__container {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #c0c0c0;
+  box-shadow: -1px 1px 5px #d1d1d1;
+}
+
+@media (min-width: 768px) {
+  .app__container {
+    width: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app__container {
+    width: 950px;
+  }
+}
