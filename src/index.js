@@ -10,7 +10,12 @@ import rootReducer from './reducers';
 
 import './index.css';
 
-const store = createStore(rootReducer);
+const { __REDUX_DEVTOOLS_EXTENSION__ } = window;
+
+const store = createStore(
+  rootReducer,
+  __REDUX_DEVTOOLS_EXTENSION__ && __REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={ store }>
