@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { login } from '../../actions/login';
+import { getMyUser } from '../../actions/getMyUser';
 import LoginForm from './components/LoginForm/LoginForm';
 
 import './Login.css';
@@ -8,12 +12,11 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-
-    this.formSubmit.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
   }
 
   formSubmit(data) {
-    console.log(data);
+    this.props.login(data, getMyUser);
   }
 
   render() {
@@ -26,4 +29,12 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  //isAccountActivating: authSelectors.isAccountActivating(state),
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  login,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
