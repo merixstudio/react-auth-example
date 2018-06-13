@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { login } from '../../actions/login';
-import { getMyUser } from '../../actions/getMyUser';
+import { login } from '../../actions/auth';
 import LoginForm from './components/LoginForm/LoginForm';
 
 import './Login.css';
@@ -16,7 +15,7 @@ class Login extends Component {
   }
 
   formSubmit(data) {
-    this.props.login(data, getMyUser);
+    this.props.login(data);
   }
 
   render() {

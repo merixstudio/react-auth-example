@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import FormInput from '../../../../components/FormInput/FormInput';
 import { required, email } from '../../../../utils/validators';
 
-let LoginForm = ({ handleSubmit, submitting, pristine, reset }) => {
+let LoginForm = ({ error, handleSubmit, submitting, pristine, reset }) => {
 
   return (
     <form onSubmit={ handleSubmit }>
@@ -31,6 +31,12 @@ let LoginForm = ({ handleSubmit, submitting, pristine, reset }) => {
           Clear Values
         </button>
       </div>
+      {
+        error &&
+        <div>
+          { error }
+        </div>
+      }
     </form>
   )
 };

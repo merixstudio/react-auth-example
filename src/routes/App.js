@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
 import Login from './login/Login';
+import mock from '../mock';
 
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    mock.mockResponse();
+  }
+
+  componentWillUnmount() {
+    mock.restore();
+  }
+
   render() {
     return (
       <div className="app__container">

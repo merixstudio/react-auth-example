@@ -4,9 +4,9 @@ import Cookies from 'js-cookie';
 export function tokenExpired(token) {
   if (!token) return true;
 
-  const tokenTime = jwtDecode(token).exp * 1000;
+  const { exp } = jwtDecode(token);
 
-  return tokenTime - Date.now() <= 0;
+  return exp - Date.now() <= 0;
 }
 
 export function tokenCloseToExpiry(token) {
