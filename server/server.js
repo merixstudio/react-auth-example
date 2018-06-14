@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const { parse } = require('querystring');
 
 function getToken(minutes = 5, secretKey = 'merix') {
   const iat = Math.floor(Date.now() / 1000);
@@ -21,19 +20,47 @@ const v1Route = express.Router();
 const authRoute = express.Router();
 const jwtRoute = express.Router();
 
+const user = {
+  email: 'uu@uu.uu',
+  password: 'uu',
+  name: 'Merix Developer',
+  role: 'Frontend',
+  token: null,
+};
 
+jwtRoute.post('/create', ({ body: { email, password } = {} }, response) => {
+  if (email === user.email && password === user.password) {
+    const token = getToken();
 
-
-jwtRoute.post('/create', (request, res) => {
-  const token = getToken();
-  console.log(request.body, token);
-
-  res.send({ token });
+    user.token = token;
+    response.send({ token });
+  } else {
+    response.status(404).end();
+  }
 });
 
-// auth/jwt/create/
-// auth/me/
-// v1/auth/jwt/refresh/
+jwtRoute.post('/refresh', ({ body: { token: oldToken } = {} }, response) => {
+  if (oldToken === user.token) {
+    const token = getToken();
+
+    user.token = token;
+    response.send({ token });
+  } else {
+    response.status(401).end();
+  }
+});
+
+authRoute.post('/me', (request, response) => {
+  if (request.get('Authorization') === `JWT ${user.token}`) {
+    response.send({
+      email: user.email,
+      name: user.name,
+      role: user.role,
+    });
+  } else {
+    response.status(401).end();
+  }
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,5 +71,3 @@ v1Route.use('/auth', authRoute);
 authRoute.use('/jwt', jwtRoute);
 
 app.listen(4000, () => console.log('Example app listening on port 4000!'));
-
-//const token = getToken();
