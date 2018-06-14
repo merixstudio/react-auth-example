@@ -12,9 +12,8 @@ const loginRequest = () => ({
   type: LOGIN_REQUEST,
 });
 
-const loginSuccess = payload => ({
+const loginSuccess = () => ({
   type: LOGIN_SUCCESS,
-  payload,
 });
 
 const loginFailure = () => ({
@@ -26,16 +25,16 @@ export const login = payload => dispatch => {
 
   return request
     .post('auth/jwt/create/', payload)
-    .then(({ data }) => {
-      dispatch(loginSuccess(data));
-      request.setAuthToken(data.token);
+    .then(({ data: { token } = {} }) => {
+      dispatch(loginSuccess());
+      request.setAuthToken(token);
 
       return dispatch(getMe());
     })
-    .catch(({ response }) => {
+    .catch(({ response: { data } = {} }) => {
       dispatch(loginFailure());
 
-      throw new SubmissionError(response.data);
+      throw new SubmissionError(data);
     });
 };
 

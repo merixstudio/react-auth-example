@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { snakeCase, camelCase } from 'lodash';
+import { toSnakeCase, toCamelCase } from 'case-converter';
 
 import { getToken, setToken, tokenCloseToExpiry, clearToken } from './jwt';
 
-const BACKEND_URL = 'http://localhost:8000/';
+const BACKEND_URL = 'http://localhost:4000/';
 
 class Request {
   constructor() {
@@ -16,7 +16,7 @@ class Request {
 
   initConfig() {
     const token = this.cookieToken || getToken();
-    const baseURL = `${BACKEND_URL}api/`;
+    const baseURL = `${BACKEND_URL}v1/`;
 
     if (token) axios.defaults.headers.common.Authorization = `JWT ${token}`;
 
@@ -25,12 +25,12 @@ class Request {
     axios.interceptors.request.use(async (config) => {
       if (tokenCloseToExpiry(token)) await this.refreshToken();
 
-      return config.data ? { ...config, data: snakeCase(config.data) } : config;
+      return config.data ? { ...config, data: toSnakeCase(config.data) } : config;
     });
 
     axios.interceptors.response.use(response => ({
       ...response,
-      data: camelCase(response.data),
+      data: toCamelCase(response.data),
     }), error => Promise.reject(this.parseError(error)));
   }
 
@@ -62,7 +62,7 @@ class Request {
       response: {
         ...response,
         data: {
-          ...camelCase(response.data),
+          ...toCamelCase(response.data),
           _error: response.data.non_field_errors || '',
         },
       },

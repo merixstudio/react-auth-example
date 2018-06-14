@@ -6,7 +6,7 @@ export function tokenExpired(token) {
 
   const { exp } = jwtDecode(token);
 
-  return exp - Date.now() <= 0;
+  return exp - Math.floor(Date.now() / 1000) <= 0;
 }
 
 export function tokenCloseToExpiry(token) {
@@ -15,7 +15,7 @@ export function tokenCloseToExpiry(token) {
   const { exp, orig_iat } = jwtDecode(token);
 
   return (
-    (exp - orig_iat) / 2 > exp - Date.now() &&
+    (exp - orig_iat) / 2 > exp - Math.floor(Date.now() / 1000) &&
     !!Cookies.get('token')
   );
 }
