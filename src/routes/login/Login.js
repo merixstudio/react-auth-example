@@ -15,7 +15,7 @@ class Login extends Component {
   }
 
   formSubmit(data) {
-    this.props.login(data);
+    return this.props.login(data);
   }
 
   render() {

@@ -44,7 +44,7 @@ class Request {
 
     this.clearAuthToken();
 
-    const response = await axios.post('v1/auth/jwt/refresh/', { token: currentToken });
+    const response = await axios.post('auth/jwt/refresh/', { token: currentToken });
 
     this.setAuthToken(response.data.token);
   }

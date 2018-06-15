@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
+const morgan = require('morgan');
 
 function getToken(minutes = 5, secretKey = 'merix') {
   const iat = Math.floor(Date.now() / 1000);
@@ -35,7 +36,7 @@ jwtRoute.post('/create', ({ body: { email, password } = {} }, response) => {
     user.token = token;
     response.send({ token });
   } else {
-    response.status(404).end();
+    response.status(404).send({ non_field_errors: 'Cannot login with given credentials.' });
   }
 });
 
@@ -65,6 +66,7 @@ authRoute.post('/me', (request, response) => {
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+app.use(morgan('dev'));
 
 app.use('/v1', v1Route);
 v1Route.use('/auth', authRoute);

@@ -64,6 +64,6 @@ export const getMe = () => dispatch => {
     .catch(error => {
       dispatch(getMeFailure());
 
-      throw new Error(error);
+      throw error;
     });
 };
