@@ -22,8 +22,8 @@ const authRoute = express.Router();
 const jwtRoute = express.Router();
 
 const user = {
-  email: 'uu@uu.uu',
-  password: 'uu',
+  email: 'you@shall.not',
+  password: 'pass',
   name: 'Merix Developer',
   role: 'Frontend',
   token: null,

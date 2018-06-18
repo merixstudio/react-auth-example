@@ -1,10 +1,59 @@
 .avatar {
   width: 100px;
   height: 100px;
+  position: relative;
   border: 3px solid #ffae00;
   box-shadow: -1px 1px 5px #c0c0c0;
   border-radius: 100%;
   background-image: url('/images/doge.jpg');
   background-size: cover;
   background-position: center;
+}
+
+.avatar__clouds {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.avatar__cloud-1,
+.avatar__cloud-2,
+.avatar__cloud-3 {
+  border: 3px solid #ffae00;
+  box-shadow: -1px 1px 5px #c0c0c0;
+  border-radius: 100%;
+  background-color: #fff;
+  opacity: 0;
+}
+
+.avatar__cloud-1 {
+  width: 25px;
+  height: 20px;
+  transition: opacity .5s ease;
+}
+
+.avatar__cloud-2 {
+  width: 40px;
+  height: 25px;
+  position: absolute;
+  top: -35px;
+  right: -30px;
+  transition: opacity .5s ease .1s;
+}
+
+.avatar__cloud-3 {
+  width: 250px;
+  height: 90px;
+  position: absolute;
+  top: -135px;
+  right: -210px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity .5s ease .2s;
+}
+
+.avatar__cloud--show {
+  opacity: 1;
 }

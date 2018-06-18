@@ -8,7 +8,7 @@ import { required, email } from '../../../../utils/validators';
 
 import './LoginForm.css';
 
-let LoginForm = ({ className, error, handleSubmit, submitting }) => {
+let LoginForm = ({ className, error, handleSubmit, submitting, onHintClick }) => {
 
   return (
     <form className={ cx('login-form', className) } onSubmit={ handleSubmit }>
@@ -34,7 +34,7 @@ let LoginForm = ({ className, error, handleSubmit, submitting }) => {
           disabled={ submitting }
           text="Submit"
         />
-        <AppButton className="login-form__hint-button" text="Hint" ghost="true" />
+        <AppButton onClick={ onHintClick } className="login-form__hint-button" text="Hint" ghost="true" />
       </div>
       {
         error &&
