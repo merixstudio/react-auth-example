@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "case-converter": "^1.0.1",
+    "classnames": "^2.2.6",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "js-cookie": "^2.2.0",

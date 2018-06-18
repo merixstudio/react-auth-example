@@ -1,9 +1,10 @@
 .app__container {
   display: flex;
   width: 100%;
-  background-color: #fff;
-  border: 1px solid #c0c0c0;
-  box-shadow: -1px 1px 5px #d1d1d1;
+}
+
+.app__login-wrapper {
+  width: 300px;
 }
 
 @media (min-width: 768px) {

@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   padding: 0;

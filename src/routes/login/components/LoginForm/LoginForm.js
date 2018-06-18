@@ -1,16 +1,20 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import * as cx from 'classnames';
 
 import FormInput from '../../../../components/FormInput/FormInput';
+import AppButton from '../../../../components/AppButton/AppButton';
 import { required, email } from '../../../../utils/validators';
 
-let LoginForm = ({ error, handleSubmit, submitting, pristine, reset }) => {
+import './LoginForm.css';
+
+let LoginForm = ({ className, error, handleSubmit, submitting }) => {
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form className={ cx('login-form', className) } onSubmit={ handleSubmit }>
       <Field
         name="email"
-        label="Email"
+        label="Email:"
         placeholder="dev@merixstudio.com"
         type="email"
         validate={ [required, email] }
@@ -18,18 +22,19 @@ let LoginForm = ({ error, handleSubmit, submitting, pristine, reset }) => {
       />
       <Field
         name="password"
-        label="Password"
+        label="Password:"
         type="password"
         validate={ required }
         component={ FormInput }
       />
-      <div>
-        <button type="submit" disabled={ submitting }>
-          Submit
-        </button>
-        <button type="button" disabled={ pristine || submitting } onClick={ reset }>
-          Clear Values
-        </button>
+      <div className="login-form__buttons">
+        <AppButton
+          className="login-form__submit-button"
+          type="submit"
+          disabled={ submitting }
+          text="Submit"
+        />
+        <AppButton className="login-form__hint-button" text="Hint" ghost="true" />
       </div>
       {
         error &&

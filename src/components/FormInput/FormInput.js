@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './FormInput.css';
+
 const FormInput = ({
   input,
   label,
@@ -7,16 +9,21 @@ const FormInput = ({
   type,
   meta: { touched, error },
 }) => (
-  <div>
-    <label>{ label }</label>
-    <div>
-      <input { ...input } placeholder={ placeholder } type={ type } />
-      {
-        touched &&
-        error &&
-        <span>{ error }</span>
-      }
+  <div className="form-input">
+    <div className="form-input__container">
+      <label className="form-input__label">{ label }</label>
+      <input
+        { ...input }
+        placeholder={ placeholder }
+        type={ type }
+        className="form-input__input"
+      />
     </div>
+    {
+      touched &&
+      error &&
+      <div className="form-input__error">{ error }</div>
+    }
   </div>
 );
 

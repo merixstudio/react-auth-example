@@ -1,0 +1,36 @@
+.app-button {
+  height: 33px;
+  padding: 5px 10px;
+  border: none;
+  color: #fff;
+  background-color: #ffae00;
+  text-shadow: 1px 1px 1px #6f6f6f;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5em;
+  outline: none;
+  cursor: pointer;
+}
+
+.app-button:hover {
+  background-color: #ffb923;
+}
+
+.app-button:active {
+  background-color: #eca200;
+}
+
+.app-button--ghost {
+  border: 1px solid #ffae00;
+  background-color: #fff;
+  color: #ffae00;
+  text-shadow: none;
+}
+
+.app-button--ghost:hover {
+  background-color: #fffaee;
+}
+
+.app-button--ghost:active {
+  background-color: #fff2d7;
+}

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { login } from '../../actions/auth';
 import LoginForm from './components/LoginForm/LoginForm';
+import Avatar from './components/Avatar/Avatar';
 
 import './Login.css';
 
@@ -20,8 +21,8 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        login
+      <div className="login">
+        <Avatar className="login__avatar" />
         <LoginForm onSubmit={ this.formSubmit }></LoginForm>
       </div>
     );

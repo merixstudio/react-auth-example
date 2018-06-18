@@ -1,0 +1,25 @@
+.form-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-input__container {
+  display: flex;
+  align-items: center;
+}
+
+.form-input__input {
+  width: 100%;
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 2px 5px;
+}
+
+.form-input__error {
+  color: #fc0000;
+  font-size: 14px;
+  text-align: right;
+}

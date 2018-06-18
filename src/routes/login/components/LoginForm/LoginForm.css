@@ -1,0 +1,15 @@
+.login-form {
+  width: 100%;
+}
+
+.login-form__buttons {
+  display: flex;
+}
+
+.login-form__submit-button {
+  flex: 2 0 auto;
+}
+
+.login-form__hint-button {
+  flex: 1 0 auto;
+}
