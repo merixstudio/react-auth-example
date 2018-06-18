@@ -4,6 +4,7 @@
 
 .login-form__buttons {
   display: flex;
+  margin-top: 30px;
 }
 
 .login-form__submit-button {

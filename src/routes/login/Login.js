@@ -34,7 +34,11 @@ class Login extends Component {
     return (
       <div className="login">
         <Avatar className="login__avatar" showHint={ this.state.showHint } />
-        <LoginForm onSubmit={ this.formSubmit } onHintClick={ this.toggleHint }></LoginForm>
+        <LoginForm
+          className="login__form"
+          onSubmit={ this.formSubmit }
+          onHintClick={ this.toggleHint }
+        />
       </div>
     );
   }

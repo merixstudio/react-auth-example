@@ -1,15 +1,22 @@
 .login {
+  position: relative;
   margin-top: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 25px;
+  padding: 25px;
   background-color: #fff;
   border: 1px solid #c0c0c0;
+  border-radius: 15px;
   box-shadow: -1px 1px 5px #d1d1d1;
 }
 
 .login__avatar {
-  margin: 5px 0 25px;
+  position: absolute;
+  top: -50px;
+}
+
+.login__form {
+  margin-top: 55px;
 }
