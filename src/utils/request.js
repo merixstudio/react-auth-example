@@ -10,12 +10,8 @@ class Request {
     this.initConfig();
   }
 
-  setToken(token) {
-    this.cookieToken = token;
-  }
-
   initConfig() {
-    const token = this.cookieToken || getToken();
+    const token = getToken();
     const baseURL = `${BACKEND_URL}v1/`;
 
     if (token) axios.defaults.headers.common.Authorization = `JWT ${token}`;
@@ -63,7 +59,7 @@ class Request {
         ...response,
         data: {
           ...toCamelCase(response.data),
-          _error: response.data.non_field_errors || '',
+          _error: response.data.non_field_errors || [],
         },
       },
     };
