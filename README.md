@@ -1,4 +1,4 @@
-## MedixStudio React auth example
+## MerixStudio React auth example
 
 Simple application to show how to use JWT with React
 
